@@ -1,0 +1,40 @@
+Errors:
+
+Circle.java :
+On line 34 (in scale) the factor by which the circle was being scaled was only
+being added to the radius of the circle. This was not changing the size of the
+circle by the factor. This was discovered on the doubleSize test which found that
+inputting a factor of 2 was not doubling the radius of the circle.
+
+On line 48 (in moveBy) the center.y was being changed to itself plus the xOffset
+rather than the yOffset. This was discovered by the simplePositiveMoveXOnly test. 
+This test was supposed to only change the x coordinate but was changing both.
+
+Circle1.java :
+On line 13 (in intersects) I added a new condition to handle cases when a circle is inside
+another circle but not touching edges. This was discovered by the containedAwaytest which
+had a circe within the first that did not touch edges anywhere but the intersects method 
+was returning true.
+
+On line 17 (in intersects) the if condition for the intersect to be true was
+simply checking if the x distance between centers was less than the radius of
+the first circle and the y distance between centers was less than the radius.
+This didn't check if the circles intersected and was discovered by overlapIntersect test.
+
+
+
+Circle2.java :
+On line 19 (in intersects) I added a new condition to handle cases when a circle is inside
+another circle but not touching edges. This was discovered by the containedAwaytest which
+had a circe within the first that did not touch edges anywhere but the intersects method 
+was returning true.
+
+On line 9 the super call to constructor(in constructor) interchanged the x and y coordinates.
+This was discovered by the simpleMove test. Since the x and y coordinates were
+expected to both change to certain values this showed that the x and y coordinates
+were not being set properly
+
+On line 22 the if condition for the intersect to be true(in intersects) check for if d (distance
+between centers) was less than radius of the first circle. This did not find
+that the overlapping circles were intersecting and was found by overlapIntersect
+test.
